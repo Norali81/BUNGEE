@@ -105,7 +105,7 @@ public class JMeterController {
 		// run JMeter
 		try {
 			ProgressController progressController = new ProgressUI();
-			Process process = Runtime.getRuntime().exec ("java " + VM_ARGS +" -jar " + enquote(jMeterPath.toString()) + params);
+			Process process = Runtime.getRuntime().exec ("java " + VM_ARGS +" -jar " + jMeterPath.toString() + params);
 			progressController.processStarted(process, start + duration);
 			 // getInputStream gives an Input stream connected to
 		    // the process p's standard output. Just use it to make
@@ -135,10 +135,10 @@ public class JMeterController {
 			File outputFile, File properyFile, String hostname, int port, int threads, int problemSize, int timeout) {
 		properyFile = FileUtility.getAbsolutePath(properyFile);
 		jmxFile = FileUtility.getAbsolutePath(jmxFile);
-		String params = " -t " + enquote(jmxFile.toString()) 
-				               + " -p " + enquote(properyFile.toString())
-							   + " -JtimestampFile=" + enquote(timestampFile.toString())
-							   + " -JoutputFile=" + enquote(outputFile.toString())
+		String params = " -t " + jmxFile.toString() 
+				               + " -p " + properyFile.toString()
+							   + " -JtimestampFile=" + timestampFile.toString()
+							   + " -JoutputFile=" + outputFile.toString()
 							   + " -Jhostname=" + hostname
 							   + " -Jport=" + port
 				               + " -JnumberOfThreads=" + threads
